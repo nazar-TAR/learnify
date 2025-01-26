@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_forward" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+{% endblock %}
+{% block content %}
+    <div class="courses_container">
+        <h1 class="category_title">Сourses in category: {{ title }}</h1>
+        <h2 class="category_subtitle">Start with these courses</h2>
+        <p class="category_description">Check out the courses taught by experienced experts with real-world experience.</p>
+        <div class="container_courses_list swiper">
+            <div class="card_wrapper_courses_list">
+                <ul class="courses_list swiper-wrapper">
+                    {% for cat in category_objects %}
+                        <li class="courses_object swiper-slide">
+                            <a href="{% url 'courses:course_detail' slug=cat.slug%}">
+                                <img class="courses_image" src="{{ cat.image.url }}" alt="{{ cat.name }}"><br>
+                                <div class="courses_object_title">{{ cat.title }}<br></div>
+                                <button class="card-button material-symbols-outlined">arrow_forward</button>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{% static 'courses/js/script.js' %}"></script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{#        {% block navigation%}#}
+{#            <div class="pagination">#}
+{#                <span class="step-links" >#}
+{#                    {% if page_obj.has_previous %}#}
+{#                        <a href="?page=1"> first</a>#}
+{#                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>#}
+{#                    {% endif %}#}
+{##}
+{#                    <span class="current">#}
+{#                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.#}
+{#                    </span>#}
+{##}
+{#                    {% if page_obj.has_next %}#}
+{#                        <a href="?page={{ page_obj.next_page_number }}">next</a>#}
+{#                        <a href="?page={{ page_obj.paginator.num_pages }}">last </a>#}
+{#                    {% endif %}#}
+{#                </span>#}
+{#            </div>#}
+{#        {%endblock%}#}

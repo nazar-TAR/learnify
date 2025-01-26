@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="categories_container">
+        <h1 class="categories_title">Popular Categories:</h1>
+        <ul class="categories_list">
+            {% for cat in categories %}
+                <li class="category_item">
+                    <a class="category_link" href="{% url 'courses:course_category_detail' cat_slug=cat.slug %}">{{ cat.name }}</a>
+                        {% if cat.image %}
+                            <a href="{% url 'courses:course_category_detail' cat_slug=cat.slug %}"><img class="category_image" src="{{ cat.image.url }}" alt="{{ cat.name }}"></a>
+                        {% else %}
+                            <img class="category_image" src="{% static 'accounts/img/default.png' %}" alt="Default Image">
+                        {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}

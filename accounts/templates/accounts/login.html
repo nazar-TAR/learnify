@@ -1,0 +1,40 @@
+{% load static %}
+{% block style%}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/accounts.css' %}">
+    <link rel="stylesheet" href="https://fonts.showit.com/v1?family=Ambit:1,400;0,400;0,300;0,700;&amp;family=Atyp-Text:0,500;0,700;&amp;family=MaisonNeue:0,400;0,700;">
+{%endblock%}
+
+{% block content %}
+<div class="login_container">
+    <div class="login_section">
+    <div class="login_section_left">
+        <div class="login_logo">
+            <a href="{% url 'main:home' %}"><img src="{% static 'accounts/img/logo.png' %}"></a>
+        </div>
+        <div class="login_item">
+            <h6 class="login_title">Account Sign In</h6>
+            <form method="post" class="login_form">
+            {% csrf_token %}
+            <div>{{ form.non_field_errors }}</div>
+            {% for f in form %}
+{#                <label for="{{ f.id_for_label }}">{{ f.label }}</label>#}
+                <p>{{ f }}</p>
+            <div>{{ f.errors }}</div>
+            {% endfor %}
+            <p><button type="submit" class="button_login">Continue</button> </p>
+            <hr>
+            </form>
+        </div>
+
+        <div class="login_help_user">
+            <a href="{% url 'accounts:register' %}">Create a new account</a>
+            <a href="#">Lost Password?</a>
+        </div>
+    </div>
+    <div class="login_photo">
+        <img src="{% static 'accounts/img/login_photo.png' %}">
+    </div>
+ </div>
+</div>
+
+{% endblock %}

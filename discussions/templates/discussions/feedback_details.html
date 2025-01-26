@@ -1,0 +1,59 @@
+{% extends 'base.html' %}}
+{% load static %}
+{% block content %}
+    <div class="feedback_details_container">
+    <section class="feedbacks-section">
+        <h2 class="feedbacks-title">Feedbacks {{ course.title|upper }}:</h2>
+        <div class="feedbacks-list">
+            {% for comment in comments %}
+                <div class="feedback_item">
+                    <p class="feedback_author"><strong>{{ comment.author }}</strong> {{ comment.created_at|date:"d M Y H:i" }}</p>
+                    <p class="feedback_text">{{ comment.text }}</p>
+                </div>
+            {% empty %}
+                <p class="no_feedbacks">Поки що немає коментарів. Будьте першим!</p>
+            {% endfor %}
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+
+                {% if comments.has_previous %}
+                    <a href="?page=1">First</a>
+                    <a href="?page={{ comments.previous_page_number }}">Previous</a>
+                {% endif %}
+
+                {% for page_num in comments.paginator.page_range %}
+                    {% if page_num <= 4 %}
+                        {% if page_num == comments.number %}
+                            <span class="current">{{ page_num }}</span>
+                        {% else %}
+                            <a href="?page={{ page_num }}">{{ page_num }}</a>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+                {% if comments.has_next %}
+                    <a href="?page={{ comments.next_page_number }}">Next</a>
+                    <a href="?page={{ comments.paginator.num_pages }}">Last</a>
+                {% endif %}
+            </span>
+        </div>
+    </section>
+
+        {% if user.is_authenticated %}
+            <section class="feedback-form-section">
+                <h3 class="feedback-form-title">Write a review:</h3>
+                <form method="post" class="feedback-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ comment_form.text }}
+                    </div>
+                    <button type="submit" class="submit-feedback-button">Add</button>
+                </form>
+            </section>
+        {% else %}
+            <p class="login-prompt">Щоб залишити коментар, будь ласка, <a href="{% url 'accounts:login' %}">login</a>.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}

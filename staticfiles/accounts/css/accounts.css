@@ -1,0 +1,194 @@
+body{
+    flex-direction: column;
+    background-color: rgb(236, 238, 240);
+    display: flex; /* Використовуємо flexbox */
+    justify-content: center; /* По горизонталі */
+    align-items: center; /* По вертикалі */
+    min-height: 100vh;
+    margin: 0; /* Відключаємо зовнішні відступи */
+    font-family: Ambit, sans-serif;
+    font-weight: 400;
+}
+.login_form{
+    width: 100%;
+}
+.login_container{
+    width: 100%;
+    margin-left: auto;
+    box-sizing: border-box;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    min-height: calc(-118px + 100vh);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+.login_section{
+
+    width: 100%;
+    height: 100%;
+    max-width: 900px;
+    max-height: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: rgb(255, 255, 255);
+    color: rgba(0, 0, 0, 0.87);
+    box-shadow: none;
+    display: flex;
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: visible;
+    border-radius: 24px;
+    padding: 1%;
+}
+.login_section_for_register{
+    width: 100%;
+    height: 100%;
+    max-width: 900px;
+    max-height: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    color: rgba(0, 0, 0, 0.87);
+    box-shadow: none;
+    display: flex;
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: visible;
+    border-radius: 24px;
+    padding: 2%;
+}
+.login_title{
+    margin: 0px 0px 32px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: Atyp-Text, sans-serif;
+}
+.button_login{
+        display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    font-size: 0.9375rem;
+    text-transform: uppercase;
+    min-width: 64px;
+    width: 100%;
+    box-shadow: none;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    color: rgb(255, 255, 255);
+    font-family: MaisonNeue, serif;
+    background-color: rgb(39, 39, 39);
+    height: 40px;
+    outline: 0px;
+    margin: 0px;
+    text-decoration: none;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    border-width: 0px;
+    border-radius: 50px;
+    padding: 0px 15px;
+}
+.button_login:hover{
+    background-color: rgb(66, 65, 65);
+}
+
+.login_section_left {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.custom_input{
+    padding-left: 15px;
+    width: 100%;
+    font-family: Ambit, sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.4375em;
+    color: rgba(0, 0, 0, 0.87);
+    box-sizing: border-box;
+    cursor: text;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    height: 40px;
+    border-radius: 50px;
+    background: rgba(39, 39, 39, 0.03);
+    margin-bottom: 24px;
+    border: 1px solid transparent;
+    transition: border 0.4s ease-in-out;
+}
+
+.custom_input:hover{
+        border: 1px solid #000000;
+}
+.custom_input:focus{
+    border: 1px solid #000000;
+    box-shadow: 0 0 2px rgba(9, 9, 9, 0.5);
+  outline: none;
+  background-color: #f9f9f9;
+}
+.custom_input:focus::placeholder{
+     color: transparent;
+}
+
+.login_help_user{
+    padding: 16px 0px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.login_help_user a{
+    margin: 0px;
+    color: rgb(39, 39, 39);
+    text-decoration: none;
+}
+
+.login_photo img{
+    width: 100%;
+    background-size: cover;
+    border-radius: 5%;
+}
+
+.login_photo {
+  width: 45%;
+  background-position: center;
+}
+
+.owns{
+    background-color: rgb(236, 238, 240);
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: flex-end;
+    padding-bottom: 10px;
+    height: 108px;
+}
+.owns span{
+    color: #4c4c4c;
+}
+.login_item{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.login_logo img{
+    max-height: 44px;
+    max-width: 44px;
+    border-radius: 50%;
+}
+
+

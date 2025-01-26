@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block style%}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="https://fonts.showit.com/v1?family=Ambit:1,400;0,400;0,300;0,700;&amp;family=Atyp-Text:0,500;0,700;&amp;family=MaisonNeue:0,400;0,700;">
+    {%endblock%}
+{% block content  %}
+    {% block hero_section %}
+    	<div class="main_hero_section_container">
+            <div class="main_hero_section_left">
+                <div class="main_hero_section_head">
+                <h1>
+                    Learn anywhere, anytime with Learnnify!
+                </h1>
+            </div>
+            <div class="main_hero_section_underhead">
+                <p>
+                    Online platform for studying courses without difficulty and with pleasure!
+                </p>
+            </div>
+            <div class="main_hero_section_button">
+                <a href="{% url 'courses:course_category_list' %}">Start studying</a>
+            </div>
+            </div>
+            <div class="main_hero_section_logo">
+                <img src="{% static 'accounts/img/test2.png' %}">
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

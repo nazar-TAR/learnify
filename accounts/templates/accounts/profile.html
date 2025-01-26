@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+{% block content %}
+<h1 class="profile-title">Profile {{ user.username }}</h1>
+<div class="profile-container">
+    <form class="profile-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="profile-info-container">
+            <div class="profile-info">
+                <div>{{ form.non_field_errors }}</div>
+                {% for f in form %}
+                    <p class="profile-field">
+                        <label for="{{ f.id_for_label }}">{{ f.label }}</label><br>
+                        {% if f.field.widget.input_type == "file" %}
+                            <label class="custom-file-label" for="{{ f.id_for_label }}">Change</label>
+                            {{ f }}
+                        {% else %}
+                            {{ f }}
+                        {% endif %}
+                    </p>
+                    <div>{{ f.errors }}</div>
+                {% endfor %}
+                <p class="profile-submit-p"><button type="submit" class="profile-submit">Save</button></p>
+            </div>
+
+            <div class="user-image">
+                {% if user.photo %}
+                    <a href="{{ user.photo.url }}"><img src="{{ user.photo.url }}" alt="User Photo"></a>
+                {% else %}
+                    <a href="{{ default_image }}"><img src="{{ default_image }}" alt="Default Image"></a>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+    <hr>
+{#    <h4>#}
+{#        <a href="#">Change Password</a>#}
+{#    </h4>#}
+</div>
+{% endblock %}

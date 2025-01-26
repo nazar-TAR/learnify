@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Test Results: {{ test.title }}</h1>
+    <p>You answered correctly on <strong>{{ score }}</strong> out of <strong>{{ total_questions }}</strong> questions.</p>
+    <a href="{% url 'courses:course_detail' slug=test.lesson.course.slug %}">Back to Course</a>
+{% endblock %}

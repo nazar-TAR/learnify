@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    {% block style%}
+    {%endblock%}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/main.css' %}">
+    <script src="{% static 'main/js/pagination.js' %}" defer></script>
+    <link rel="stylesheet" href="https://fonts.showit.com/v1?family=Ambit:1,400;0,400;0,300;0,700;&amp;family=Atyp-Text:0,500;0,700;&amp;family=MaisonNeue:0,400;0,700;">
+</head>
+<body>
+        <div class="main_header_container">
+            <div class="main_header_logo_and_name">
+                <a href="{% url 'main:home' %}"><img src="{% static 'accounts/img/logo.png' %}"></a>
+                <h6>Learnify</h6>
+            </div>
+            <div class="main_header_navigate">
+                {% for m in menu %}
+                    <a href="{% url 'main:'|add:m.url_name %}">{{ m.title }}</a>
+                {% endfor %}
+                {% if user.is_authenticated %}
+                    <a href="{% url 'accounts:profile' %}">Profile</a>
+                {% endif %} 
+            </div>
+            <div class="main_header_authenticate">
+                {% for a in authenticate %}
+                    <a href="{% url a.url_name %}">{{ a.title }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <hr class="main_header_border">
+{% block content%}
+{% block header %}
+{% endblock %}
+{% block hero_section %}
+{% endblock %}
+{% block popular_courses%}
+{% endblock %}
+{% block categories_courses%}
+{% endblock %}
+{% block platform_benefits%}
+{% endblock %}
+{% block feedbacks%}
+{% endblock %}
+{% block call-to-action_section%}
+{% endblock %}
+{% block footer%}
+
+{% endblock %}
+{%endblock%}
+    <div class="owns">
+        <span>
+            @2024 Privacy Policy, Terms of Use
+        </span>
+    </div>
+{% block scripts %}
+{% endblock %}
+</body>
+</html>

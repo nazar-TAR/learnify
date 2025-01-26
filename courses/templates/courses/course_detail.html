@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load  static %}
+{% block content %}
+
+<div class="course_detail">
+    <div class="course_detail_left">
+            <h1 class="course_detail_left_title">{{ course.title }}</h1>
+        <img class="courses_image" src="{{ course.image.url }}" alt="{{ cat.name }}"><br>
+        <p class="course_detail_left_description">{{ course.description }}</p>
+            <a href="{% url 'discussions:feedback_details' slug=course.slug %}" class="feedback_bottom">Feedback</a>
+    </div>
+
+    <div class="course_detail_right">
+            <h2>Lessons:</h2>
+        <ul>
+            {% for lesson in lessons %}
+                <div class="course_detail_right_lessons">
+                    <li class="course_detail_right_button_li">{{ lesson.title }} : </li>
+                    <div class="course_detail_right_buttons">
+                        <div class="course_detail_right_button_video"><a href="{{ lesson.video_url }}" target="_blank">Watch video</a></div>
+                        {% if lesson.test %}
+                        <div class="course_detail_right_button">
+                            <a href="{% url 'tests:test_detail' lesson.id %}">Test</a>
+                        </div>
+
+                    {% else %}
+                        <p class="course_detail_right_button" style="font-size: 14px">No test for this lesson.</p>
+                    {% endif %}
+                    </div>
+                </div>
+                    {% empty %}
+                <li>No lessons available for this course.</li>
+            {% endfor %}
+        </ul>
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">First</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
+
+                {% for page_num in page_obj.paginator.page_range %}
+                    {% if page_num <= 4 %}
+                        {% if page_num == page_obj.number %}
+                            <span class="current">{{ page_num }}</span>
+                        {% else %}
+                            <a href="?page={{ page_num }}">{{ page_num }}</a>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</div>
+{% endblock %}

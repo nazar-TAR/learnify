@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load  static %}
+{% block content %}
+
+    {% for c in courses %}
+    	<li>
+            <a href="{% url 'courses:course_detail' c.slug %}">{{ c.title }}</a>
+            <p>{{ c.description|truncatewords:20 }}</p>
+        </li>
+    {% endfor %}
+    
+{% endblock %}
