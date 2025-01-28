@@ -17,7 +17,7 @@ class LoginUser(LoginView):
     }
 
     def get_success_url(self):
-        return reverse_lazy('users:index')
+        return reverse_lazy('main:home')
 
 
 
@@ -47,7 +47,5 @@ class ProfileUser(UpdateView):
         return self.request.user
 
 
-def index(request):
-    return render(request, 'accounts/index.html')
 
 
